@@ -2,8 +2,6 @@
     <qresource prefix="/images/logo"/>
     <qresource prefix="/Logo"/>
     <qresource prefix="/logo">
-        <file>SugonNetLogo.jpeg</file>
-        <file>SugonNetLogoB.jpeg</file>
         <file>haitun.svg</file>
         <file>xiongmao.svg</file>
         <file>boxing.svg</file>

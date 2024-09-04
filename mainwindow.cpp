@@ -87,6 +87,8 @@ void MainWindow::initGraphformPlot() {
     ui->label3->setPixmap(originalPix3.scaled(ui->label3->size(), Qt::KeepAspectRatioByExpanding));
 
     QString initTime = "00:00:00";
+    ui->timerLcdNum->setStyleSheet("QLCDNumber { color: black; background: transparent}");
+    ui->timerLcdNum_2->setStyleSheet("QLCDNumber { color: black; background: transparent}");
     ui->timerLcdNum->display(initTime);
     ui->timerLcdNum_2->display(".000");
 
@@ -154,8 +156,8 @@ void MainWindow::stopRecording() {
     m_audioSource->stop();
     m_device->close();
     isRecording = false;
-    ui->timerLcdNum->setStyleSheet("QLCDNumber { color: blue; }");
-    ui->timerLcdNum_2->setStyleSheet("QLCDNumber { color: blue; }");
+    ui->timerLcdNum->setStyleSheet("QLCDNumber { color: blue; background: transparent}");
+    ui->timerLcdNum_2->setStyleSheet("QLCDNumber { color: blue; background: transparent}");
     qDebug() << "stopButton has clicked. Recording? " << isRecording << "\n";
 
 }
@@ -172,10 +174,9 @@ void MainWindow::resetRecording()
     recordElapsed = 0;
     QString initTime = "00:00:00";
     ui->timerLcdNum->display(initTime);
-    ui->timerLcdNum->setStyleSheet("QLCDNumber { color: black; }");
-
+    ui->timerLcdNum->setStyleSheet("QLCDNumber { color: black; background: transparent}");
     ui->timerLcdNum_2->display(".000");
-    ui->timerLcdNum_2->setStyleSheet("QLCDNumber { color: black; }");
+    ui->timerLcdNum_2->setStyleSheet("QLCDNumber { color: black; background: transparent}");
     ui->amplProgressBar->setValue(0);
 
     m_device->m_buffer.clear();
@@ -209,11 +210,11 @@ void MainWindow::processAudioInput() {
                              .arg(minutes, 2, 10, QChar('0'))
                              .arg(seconds, 2, 10, QChar('0'));
     // ui->timerLcdNum->setStyleSheet("QLCDNumber { color: red; }");
-    ui->timerLcdNum->setStyleSheet("color:rgb(176, 31, 36)");
+    ui->timerLcdNum->setStyleSheet("color:rgb(176, 31, 36); background: transparent");
     ui->timerLcdNum->display(timeString);
     QString msString = QString(".%1").arg(milliseconds, 3, 10, QChar('0'));
     ui->timerLcdNum_2->display(msString);
-    ui->timerLcdNum_2->setStyleSheet("color:rgb(176, 31, 36)");
+    ui->timerLcdNum_2->setStyleSheet("color:rgb(176, 31, 36); background: transparent");
 
     qreal average = 0.0;
     for (int i = 0; i < m_device->wave_y.size(); i++)
